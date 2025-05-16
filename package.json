@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "setup-db": "tsx scripts/setup-db.ts",
-    "test-db": "tsx scripts/test-db.ts"
+    "test-db": "tsx scripts/test-db.ts",
+    "test-write": "tsx scripts/test-write.ts"
   },
   "dependencies": {
     "@vercel/postgres": "latest",
