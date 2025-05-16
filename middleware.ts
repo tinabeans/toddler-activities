@@ -8,7 +8,15 @@ export function middleware(request: NextRequest) {
     
     // Check if we are in production mode and if writes are allowed
     const isProduction = process.env.NODE_ENV === 'production' || process.env.VERCEL_ENV === 'production';
-    const allowProductionWrites = process.env.ALLOW_PRODUCTION_WRITES === 'true';
+    
+    // Be more flexible with the environment variable format
+    const allowValue = process.env.ALLOW_PRODUCTION_WRITES;
+    const allowProductionWrites = 
+      allowValue === 'true' || 
+      allowValue === 'TRUE' || 
+      allowValue === '1' || 
+      allowValue === 'yes' ||
+      allowValue === 'YES';
     
     // Debug logging
     console.log('Middleware environment check:', {
@@ -30,7 +38,8 @@ export function middleware(request: NextRequest) {
           debug: {
             NODE_ENV: process.env.NODE_ENV,
             VERCEL_ENV: process.env.VERCEL_ENV,
-            ALLOW_PRODUCTION_WRITES: process.env.ALLOW_PRODUCTION_WRITES
+            ALLOW_PRODUCTION_WRITES: process.env.ALLOW_PRODUCTION_WRITES,
+            allowProductionWrites
           }
         },
         { status: 403 }
