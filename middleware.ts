@@ -10,12 +10,28 @@ export function middleware(request: NextRequest) {
     const isProduction = process.env.NODE_ENV === 'production' || process.env.VERCEL_ENV === 'production';
     const allowProductionWrites = process.env.ALLOW_PRODUCTION_WRITES === 'true';
     
+    // Debug logging
+    console.log('Middleware environment check:', {
+      NODE_ENV: process.env.NODE_ENV,
+      VERCEL_ENV: process.env.VERCEL_ENV,
+      ALLOW_PRODUCTION_WRITES: process.env.ALLOW_PRODUCTION_WRITES,
+      isProduction,
+      allowProductionWrites,
+      method: request.method,
+      pathname: request.nextUrl.pathname
+    });
+    
     // If in production and writes are not allowed, return an error
     if (isProduction && !allowProductionWrites) {
       return NextResponse.json(
         { 
           error: "Writing activities is only allowed in development mode",
-          hint: "Set ALLOW_PRODUCTION_WRITES=true in your environment variables to enable writes in production."
+          hint: "Set ALLOW_PRODUCTION_WRITES=true in your environment variables to enable writes in production.",
+          debug: {
+            NODE_ENV: process.env.NODE_ENV,
+            VERCEL_ENV: process.env.VERCEL_ENV,
+            ALLOW_PRODUCTION_WRITES: process.env.ALLOW_PRODUCTION_WRITES
+          }
         },
         { status: 403 }
       );
