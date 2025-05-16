@@ -38,16 +38,19 @@ export async function POST(request: Request) {
     }
 
     // Log environment variables (sanitized)
-    console.log('Environment check:', {
+    const envCheck = {
       NODE_ENV: process.env.NODE_ENV,
       VERCEL_ENV: process.env.VERCEL_ENV,
       HAS_POSTGRES_URL: !!process.env.POSTGRES_URL,
       HAS_POSTGRES_USER: !!process.env.POSTGRES_USER,
-    });
+    };
+    console.log('Environment check:', envCheck);
 
     // Log the current database role before attempting write
+    let dbRoleInfo: any = null;
     try {
       const { rows: [roleInfo] } = await sql`SELECT current_user, current_database()`;
+      dbRoleInfo = roleInfo;
       console.log('Current database connection info:', JSON.stringify(roleInfo));
     } catch (dbError) {
       console.error('Error checking database connection info:', dbError);
@@ -56,6 +59,16 @@ export async function POST(request: Request) {
         stack: dbError.stack,
         name: dbError.name
       } : 'Unknown error');
+      
+      // Return the database connection error info in the response
+      return NextResponse.json({
+        error: 'Failed to check database connection',
+        details: dbError instanceof Error ? dbError.message : 'Unknown error',
+        errorType: dbError instanceof Error ? dbError.name : 'UnknownErrorType',
+        diagnostics: {
+          environment: envCheck
+        }
+      }, { status: 500 });
     }
 
     console.log('Attempting to create activity in database...');
@@ -77,7 +90,21 @@ export async function POST(request: Request) {
     console.error('Message:', errorMessage);
     console.error('Stack:', errorDetails);
     
-    // Log the full error object properties
+    // Extract error properties
+    const errorProps: Record<string, any> = {};
+    try {
+      Object.getOwnPropertyNames(error).forEach(prop => {
+        try {
+          // @ts-ignore
+          errorProps[prop] = typeof error[prop] === 'function' ? '[Function]' : error[prop];
+        } catch (e) {
+          errorProps[prop] = '[Error accessing property]';
+        }
+      });
+    } catch (e) {
+      console.error('Error extracting error properties:', e);
+    }
+    
     console.error('Full error object properties:', JSON.stringify(Object.getOwnPropertyNames(error).reduce((acc: Record<string, any>, prop) => {
       try {
         // @ts-ignore
@@ -88,12 +115,27 @@ export async function POST(request: Request) {
       return acc;
     }, {})));
     
+    // Return detailed diagnostics in the response itself
     return NextResponse.json(
       { 
         error: 'Failed to save activity', 
         details: errorMessage,
         errorType: errorName,
-        hint: status === 403 ? 'Database write permission denied. Please check database permissions.' : undefined
+        hint: status === 403 ? 'Database write permission denied. Please check database permissions.' : undefined,
+        diagnostics: {
+          environment: {
+            NODE_ENV: process.env.NODE_ENV,
+            VERCEL_ENV: process.env.VERCEL_ENV,
+            HAS_POSTGRES_URL: !!process.env.POSTGRES_URL,
+            HAS_POSTGRES_USER: !!process.env.POSTGRES_USER,
+          },
+          errorProperties: errorProps,
+          pgErrorCode: (error as any)?.code,
+          pgErrorDetail: (error as any)?.detail,
+          pgErrorHint: (error as any)?.hint,
+          pgErrorSeverity: (error as any)?.severity,
+          timestamp: new Date().toISOString()
+        }
       },
       { status }
     );
@@ -156,12 +198,42 @@ export async function PUT(request: Request) {
     console.error('Message:', errorMessage);
     console.error('Stack:', errorStack);
     
+    // Extract error properties
+    const errorProps: Record<string, any> = {};
+    try {
+      Object.getOwnPropertyNames(error).forEach(prop => {
+        try {
+          // @ts-ignore
+          errorProps[prop] = typeof error[prop] === 'function' ? '[Function]' : error[prop];
+        } catch (e) {
+          errorProps[prop] = '[Error accessing property]';
+        }
+      });
+    } catch (e) {
+      console.error('Error extracting error properties:', e);
+    }
+    
+    // Return detailed diagnostics in the response itself
     return NextResponse.json(
       { 
         error: 'Failed to update activity',
         details: errorMessage,
         errorType: errorName,
-        hint: status === 403 ? 'Database write permission denied. Please check database permissions.' : undefined
+        hint: status === 403 ? 'Database write permission denied. Please check database permissions.' : undefined,
+        diagnostics: {
+          environment: {
+            NODE_ENV: process.env.NODE_ENV,
+            VERCEL_ENV: process.env.VERCEL_ENV,
+            HAS_POSTGRES_URL: !!process.env.POSTGRES_URL,
+            HAS_POSTGRES_USER: !!process.env.POSTGRES_USER,
+          },
+          errorProperties: errorProps,
+          pgErrorCode: (error as any)?.code,
+          pgErrorDetail: (error as any)?.detail,
+          pgErrorHint: (error as any)?.hint,
+          pgErrorSeverity: (error as any)?.severity,
+          timestamp: new Date().toISOString()
+        }
       },
       { status }
     );
