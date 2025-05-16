@@ -38,9 +38,9 @@ export default function AddActivityModal({ isOpen, onClose, onSave, categories }
       />
 
       {/* Modal */}
-      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-8 w-full max-w-lg z-30">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">
+      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-4 sm:p-8 w-[95%] sm:w-full max-w-lg z-30">
+        <div className="flex justify-between items-center mb-4 sm:mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
             Add an Activity
           </h2>
           <button
@@ -53,7 +53,7 @@ export default function AddActivityModal({ isOpen, onClose, onSave, categories }
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           <div>
             <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
               Title
@@ -100,17 +100,17 @@ export default function AddActivityModal({ isOpen, onClose, onSave, categories }
             </select>
           </div>
 
-          <div className="flex justify-end gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row sm:justify-end gap-3 sm:gap-4 pt-4">
             <button
               type="button"
               onClick={onClose}
-              className="px-6 py-2 rounded-lg border-2 border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors font-semibold"
+              className="px-4 sm:px-6 py-2 rounded-lg border-2 border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors font-semibold w-full sm:w-auto"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-6 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition-colors font-semibold"
+              className="px-4 sm:px-6 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition-colors font-semibold w-full sm:w-auto"
             >
               Save Activity
             </button>

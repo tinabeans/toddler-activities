@@ -207,23 +207,23 @@ export default function Home() {
         refreshTrigger={refreshTrigger}
       />
       
-      <main className="min-h-screen pt-24 px-8 pb-8 bg-gradient-to-b from-blue-100 to-purple-100">
+      <main className="min-h-screen pt-20 px-4 sm:px-8 pb-8 bg-gradient-to-b from-blue-100 to-purple-100">
         <div className="max-w-2xl mx-auto">
-          <h1 className={`text-5xl text-center mb-8 text-purple-600 ${barrio.className}`}>
+          <h1 className={`text-3xl sm:text-4xl md:text-5xl text-center mb-6 sm:mb-8 text-purple-600 ${barrio.className}`}>
             Toddler Fun Generator! 🎯
           </h1>
           {currentActivity && (
             <>
-              <div className="bg-white p-8 rounded-2xl shadow-xl animate-fade-in mb-8">
-                <div className="mb-4 flex justify-between items-center">
+              <div className="bg-white p-5 sm:p-8 rounded-2xl shadow-xl animate-fade-in mb-6 sm:mb-8">
+                <div className="mb-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
                   <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${
                     categoryColors[currentActivity.category]?.bg || 'bg-gray-100'
                   } ${
                     categoryColors[currentActivity.category]?.text || 'text-gray-800'
-                  }`}>
+                  } self-start`}>
                     {currentActivity.category}
                   </span>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 self-end sm:self-auto">
                     {completionCounts[currentActivity.title] > 0 && (
                       <span className={`text-sm ${categoryColors[currentActivity.category]?.text || 'text-purple-400'} opacity-75`}>
                         Done {completionCounts[currentActivity.title]} {completionCounts[currentActivity.title] === 1 ? 'time' : 'times'}
@@ -232,16 +232,16 @@ export default function Home() {
                     <button
                       onClick={handleComplete}
                       disabled={isLoading}
-                      className={`px-4 py-2 rounded-xl bg-gradient-to-r ${categoryColors[currentActivity.category]?.gradient || 'from-green-500 to-emerald-500'} text-white font-bold hover:shadow-lg transform hover:scale-105 transition-all text-sm`}
+                      className={`px-4 py-2 rounded-xl bg-gradient-to-r ${categoryColors[currentActivity.category]?.gradient || 'from-green-500 to-emerald-500'} text-white font-bold hover:shadow-lg transform hover:scale-105 transition-all text-sm whitespace-nowrap`}
                     >
                       We did it! 🚀
                     </button>
                   </div>
                 </div>
-                <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">
                   {currentActivity.title}
                 </h2>
-                <p className="text-lg text-gray-600">
+                <p className="text-base sm:text-lg text-gray-600">
                   {currentActivity.description}
                 </p>
               </div>
@@ -250,7 +250,7 @@ export default function Home() {
                 <button
                   onClick={getRandomActivity}
                   disabled={isLoading}
-                  className="px-8 py-4 text-lg rounded-2xl border-4 transition-all font-bold text-purple-600 border-purple-600 hover:bg-purple-50 hover:scale-105 shadow-sm"
+                  className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-2xl border-4 transition-all font-bold text-purple-600 border-purple-600 hover:bg-purple-50 hover:scale-105 shadow-sm"
                 >
                   Another one 🎲
                 </button>
@@ -259,7 +259,7 @@ export default function Home() {
           )}
           
           {totalCompletions > 0 && (
-            <p className="text-center mt-6 text-purple-700">
+            <p className="text-center mt-6 text-purple-700 text-sm sm:text-base">
               Total activities completed: {totalCompletions}
             </p>
           )}

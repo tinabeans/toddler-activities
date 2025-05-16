@@ -112,9 +112,9 @@ export default function StatsPanel({ isOpen, onClose, onEditActivity, onDeleteAc
 
       {/* Panel */}
       <div 
-        className={`fixed top-0 left-0 h-full w-96 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out overflow-hidden ${
+        className={`fixed top-0 left-0 h-full bg-white shadow-2xl transform transition-transform duration-300 ease-in-out overflow-hidden ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        } w-full sm:w-[90%] md:w-96 max-w-full`}
       >
         <div className="h-full flex flex-col">
           <div className="p-6 border-b">

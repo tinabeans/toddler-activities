@@ -51,9 +51,9 @@ export default function EditActivityModal({
       />
 
       {/* Modal */}
-      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-8 w-full max-w-lg z-30">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">
+      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl p-4 sm:p-8 w-[95%] sm:w-full max-w-lg z-30">
+        <div className="flex justify-between items-center mb-4 sm:mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
             Edit Activity
           </h2>
           <button
@@ -66,7 +66,7 @@ export default function EditActivityModal({
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           <div>
             <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
               Title
@@ -113,13 +113,13 @@ export default function EditActivityModal({
             </select>
           </div>
 
-          <div className="flex justify-between items-center pt-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center pt-4 gap-3">
             {/* Delete button - only shown if onDelete is provided */}
             {onDelete && (
               <button
                 type="button"
                 onClick={onDelete}
-                className="px-5 py-2 rounded-lg border-2 border-red-200 text-red-600 hover:bg-red-50 transition-colors font-semibold flex items-center gap-1"
+                className="px-5 py-2 rounded-lg border-2 border-red-200 text-red-600 hover:bg-red-50 transition-colors font-semibold flex items-center gap-1 w-full sm:w-auto"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -127,17 +127,17 @@ export default function EditActivityModal({
                 Delete
               </button>
             )}
-            <div className="flex justify-end gap-4 ml-auto">
+            <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4 w-full sm:w-auto sm:ml-auto">
               <button
                 type="button"
                 onClick={onClose}
-                className="px-6 py-2 rounded-lg border-2 border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors font-semibold"
+                className="px-4 sm:px-6 py-2 rounded-lg border-2 border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors font-semibold w-full sm:w-auto"
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="px-6 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition-colors font-semibold"
+                className="px-4 sm:px-6 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition-colors font-semibold w-full sm:w-auto"
               >
                 Save Changes
               </button>

@@ -18,7 +18,7 @@ export default function MenuBar({ onToggleStats, onAddActivity, categories, isSt
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <button
             onClick={onToggleStats}
-            className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-lg transition-colors text-gray-700"
+            className="flex items-center gap-1 sm:gap-2 p-2 hover:bg-gray-100 rounded-lg transition-colors text-gray-700"
             aria-label={isStatsPanelOpen ? "Close Stats" : "Open Stats"}
           >
             <div className="relative w-6 h-6">
@@ -42,15 +42,15 @@ export default function MenuBar({ onToggleStats, onAddActivity, categories, isSt
                 />
               </svg>
             </div>
-            <span className="font-medium">All Activities</span>
+            <span className="font-medium text-sm sm:text-base">Activities</span>
           </button>
 
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="px-4 py-2 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-colors flex items-center gap-2"
+            className="px-3 sm:px-4 py-2 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-colors flex items-center gap-1 sm:gap-2 text-sm sm:text-base"
           >
             <svg 
-              className="w-5 h-5" 
+              className="w-4 h-4 sm:w-5 sm:h-5" 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
@@ -62,7 +62,7 @@ export default function MenuBar({ onToggleStats, onAddActivity, categories, isSt
                 d="M12 4v16m8-8H4" 
               />
             </svg>
-            Add Activity
+            <span>Add Activity</span>
           </button>
         </div>
       </div>

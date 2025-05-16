@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/api/test",
+      "dest": "/api/test"
+    },
+    {
+      "src": "/api/env-debug",
+      "dest": "/api/env-debug"
+    },
+    {
+      "src": "/api/activities(.*)",
+      "dest": "/api/activities$1"
+    }
+  ]
+} 
