@@ -31,7 +31,13 @@ export async function getActivities(): Promise<ActivityWithStats[]> {
       FROM activities 
       ORDER BY category, title;
     `;
-    return rows;
+    return rows.map(row => ({
+      id: row.id,
+      category: row.category,
+      title: row.title,
+      description: row.description,
+      completionCount: row.completionCount || 0
+    }));
   } catch (error) {
     console.error('Error fetching activities:', error);
     throw error;
