@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { sql } from '@vercel/postgres';
 import { 
   getActivities, 
   createActivity, 
@@ -32,13 +33,24 @@ export async function POST(request: Request) {
       );
     }
 
+    // Log the current database role before attempting write
+    const { rows: [roleInfo] } = await sql`SELECT current_user, current_database()`;
+    console.log('Current database connection info:', roleInfo);
+
     const activity = await createActivity(newActivity);
     return NextResponse.json(activity, { status: 201 });
   } catch (error) {
     console.error('Error saving activity:', error);
-    // Check for specific database errors
+    // Enhanced error logging
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorDetails = error instanceof Error ? error.stack : '';
     const status = errorMessage.includes('permission denied') ? 403 : 500;
+    
+    // Log detailed error information
+    console.error('Detailed error information:');
+    console.error('Status:', status);
+    console.error('Message:', errorMessage);
+    console.error('Stack:', errorDetails);
     
     return NextResponse.json(
       { 
