@@ -1,0 +1,475 @@
+[
+  {
+    "category": "Fine Motor Fun",
+    "title": "Velcro Fun",
+    "description": "If you have toys or clothes with Velcro!",
+    "completionCount": 1
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Blanket Tunnels",
+    "description": "Drape blankets over chairs or furniture to make tunnels to crawl through."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Stuffed Animal Parade",
+    "description": "Have your toddler line up their stuffed animals and march them around the room."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Dance Party",
+    "description": "Put on some music and let loose with silly dances!"
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Animal Walks",
+    "description": "Encourage walking like different animals (bear crawl, crab walk, bunny hop)."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Simon Says",
+    "description": "Play a simple version with movement commands."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Red Light, Green Light",
+    "description": "A classic for a reason!"
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Jump Over Things",
+    "description": "Use a rolled-up towel or a line on the floor to jump over."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Marching Band",
+    "description": "Use pots and spoons as drums and march around."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Balancing Act",
+    "description": "Walk along a line on the floor or a piece of tape."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Reach for the Sky",
+    "description": "Encourage stretching up high like a tall tree."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Wiggle Like a Worm",
+    "description": "Get down on the floor and wiggle around."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Spin Like a Top",
+    "description": "Gentle spins to get dizzy (supervised, of course!)."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Shadow Tag",
+    "description": "Chase each other's shadows."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Laundry Basket Ride (Gentle)",
+    "description": "If safe, a very slow, short push in an empty laundry basket."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Balloon Bop",
+    "description": "Gently tap a balloon in the air and try to keep it from touching the ground."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Silly Walks",
+    "description": "Encourage funny ways of walking."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Statues",
+    "description": "Put on music, and when it stops, freeze in a silly pose."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "Follow the Leader",
+    "description": "Take turns leading simple movements."
+  },
+  {
+    "category": "Moving and Grooving",
+    "title": "\"Clean Up\" Race",
+    "description": "Make cleaning up toys a timed race (even if it's just a few items)."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Stacking Cups",
+    "description": "See how high a tower they can build."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Nesting Bowls",
+    "description": "Practice putting bowls inside each other."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Sorting Toys",
+    "description": "Sort toys by color, size, or type into different piles."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Transferring Objects",
+    "description": "Use spoons or tongs to move small toys from one container to another."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Building with Blocks (Simple)",
+    "description": "Focus on stacking and simple structures."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Stringing Beads (Large)",
+    "description": "If you have large beads and a thick string or shoelace."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Playdough Fun (Homemade)",
+    "description": "If you have flour, salt, and water, you can quickly make some! (If not, skip this one)."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Tearing Paper",
+    "description": "Provide scrap paper for tearing into small pieces."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Crumpling Paper",
+    "description": "Crumple paper into balls."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Opening and Closing Containers",
+    "description": "Practice opening and closing different sized containers with lids."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Snapping Buttons (Large)",
+    "description": "If you have clothes with large buttons."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Zipping and Unzipping",
+    "description": "Practice with a jacket or bag."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Velcro Fun",
+    "description": "If you have toys or clothes with Velcro."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Turning Pages of a Book",
+    "description": "Focus on turning one page at a time."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Squeezing Sponges (Over a Bowl)",
+    "description": "Practice hand strength."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Using Clothes Pins",
+    "description": "Clip them onto the edge of a bowl or piece of cardboard."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Stirring Dry Ingredients",
+    "description": "Let them stir dried pasta or beans in a bowl."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Pouring (Dry)",
+    "description": "Practice pouring dried beans or pasta from one container to another."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Making Balls of Foil",
+    "description": "Crumple up small pieces of aluminum foil."
+  },
+  {
+    "category": "Fine Motor Fun",
+    "title": "Unwrapping Small Toys",
+    "description": "Wrap a few small toys in paper towels for them to unwrap."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Looking at Books",
+    "description": "Encourage independent browsing."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Storytelling with Stuffed Animals",
+    "description": "Have them make up stories for their toys."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "\"Reading\" Picture Books",
+    "description": "Even without knowing words, they can tell stories from the pictures."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Singing Songs",
+    "description": "Encourage singing familiar tunes."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Humming",
+    "description": "A quiet way to express themselves."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Listening to Music",
+    "description": "Put on calming music."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Looking out the Window",
+    "description": "Observe the world outside."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Naming Objects",
+    "description": "Go around the room and name different things."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Describing Things",
+    "description": "Encourage them to describe the color, shape, or size of objects."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Playing \"I Spy\" (Simple)",
+    "description": "\"I spy with my little eye something blue.\""
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Reciting Nursery Rhymes",
+    "description": "If they know any."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Making Animal Sounds",
+    "description": "Encourage making sounds of different animals."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Playing \"Quiet Game\"",
+    "description": "See who can be the quietest for a short period."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Looking at Family Photos",
+    "description": "Talk about the people in the pictures."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Imagining Games",
+    "description": "Encourage them to pretend to be different things (a cat, a superhero)."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Building a Fort (Small)",
+    "description": "Use a single blanket draped over a chair for a cozy space."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Drawing in the Air",
+    "description": "Use a finger to \"draw\" shapes or letters in the air."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Tracing Shapes on the Floor",
+    "description": "Use a finger to trace lines or shapes on the floor."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Matching Socks",
+    "description": "If you have a pile of clean socks, let them try to match pairs."
+  },
+  {
+    "category": "Quiet Time Adventures",
+    "title": "Counting Objects",
+    "description": "Count a small group of toys."
+  },
+  {
+    "category": "Sensory Explorations (Dry)",
+    "title": "Playing with Dried Pasta",
+    "description": "Let them scoop, pour, and explore different shapes."
+  },
+  {
+    "category": "Sensory Explorations (Dry)",
+    "title": "Playing with Dried Beans or Rice",
+    "description": "Similar to pasta, but supervise closely to avoid putting in mouths."
+  },
+  {
+    "category": "Sensory Explorations (Dry)",
+    "title": "Exploring Different Textures",
+    "description": "Feel the difference between a soft blanket, a smooth table, a rough towel."
+  },
+  {
+    "category": "Sensory Explorations (Dry)",
+    "title": "Scrunching Fabric",
+    "description": "Play with different types of fabric."
+  },
+  {
+    "category": "Sensory Explorations (Dry)",
+    "title": "Sorting Buttons by Size",
+    "description": "If you have a collection of buttons."
+  },
+  {
+    "category": "Sensory Explorations (Dry)",
+    "title": "Playing with Cotton Balls",
+    "description": "They can pull them apart or make piles."
+  },
+  {
+    "category": "Sensory Explorations (Dry)",
+    "title": "Exploring Pinecones or Leaves (If Available)",
+    "description": "Bring nature indoors for exploration."
+  },
+  {
+    "category": "Sensory Explorations (Dry)",
+    "title": "Playing with Empty Cardboard Tubes",
+    "description": "They can be telescopes, swords, or building materials."
+  },
+  {
+    "category": "Sensory Explorations (Dry)",
+    "title": "Exploring Different Shaped Spoons",
+    "description": "Notice the different feels."
+  },
+  {
+    "category": "Sensory Explorations (Dry)",
+    "title": "Playing with Paperclips (Supervised)",
+    "description": "They can link them together (if they don't put things in their mouth)."
+  },
+  {
+    "category": "Imaginative Play",
+    "title": "Playing House",
+    "description": "Use dolls or stuffed animals to act out family scenes."
+  },
+  {
+    "category": "Imaginative Play",
+    "title": "Playing Doctor",
+    "description": "Use pretend tools (or household objects) to \"check\" stuffed animals."
+  },
+  {
+    "category": "Imaginative Play",
+    "title": "Playing Chef",
+    "description": "Use pretend food (or toys) to make meals."
+  },
+  {
+    "category": "Imaginative Play",
+    "title": "Playing Superhero",
+    "description": "Encourage imaginative scenarios and movements."
+  },
+  {
+    "category": "Imaginative Play",
+    "title": "Playing Teacher",
+    "description": "Let them \"teach\" their stuffed animals."
+  },
+  {
+    "category": "Imaginative Play",
+    "title": "Playing Shopkeeper",
+    "description": "Use toys as items to sell."
+  },
+  {
+    "category": "Imaginative Play",
+    "title": "Playing Construction Worker",
+    "description": "Use blocks to build and \"fix\" things."
+  },
+  {
+    "category": "Imaginative Play",
+    "title": "Playing Bus Driver",
+    "description": "Line up chairs for a \"bus\" and have stuffed animals as passengers."
+  },
+  {
+    "category": "Imaginative Play",
+    "title": "Playing Mail Carrier",
+    "description": "Deliver \"mail\" (folded pieces of paper) to different spots."
+  },
+  {
+    "category": "Imaginative Play",
+    "title": "Playing Gardener",
+    "description": "Pretend to plant seeds (small toys) in a bowl."
+  },
+  {
+    "category": "Problem Solving & Early Learning",
+    "title": "Putting Toys Back in Their Place",
+    "description": "Encouraging organization."
+  },
+  {
+    "category": "Problem Solving & Early Learning",
+    "title": "Matching Pairs of Socks",
+    "description": "A practical sorting activity."
+  },
+  {
+    "category": "Problem Solving & Early Learning",
+    "title": "Finding Specific Toys",
+    "description": "\"Can you find the red car?\""
+  },
+  {
+    "category": "Problem Solving & Early Learning",
+    "title": "Following Simple Instructions",
+    "description": "\"Can you put the block on the table?\""
+  },
+  {
+    "category": "Problem Solving & Early Learning",
+    "title": "Naming Colors",
+    "description": "Point to objects and ask for the color."
+  },
+  {
+    "category": "Problem Solving & Early Learning",
+    "title": "Naming Shapes",
+    "description": "If you have simple shaped toys."
+  },
+  {
+    "category": "Problem Solving & Early Learning",
+    "title": "Identifying Sizes (Big/Small)",
+    "description": "Compare different sized objects."
+  },
+  {
+    "category": "Problem Solving & Early Learning",
+    "title": "Counting Small Groups of Toys",
+    "description": "Practice counting up to three or four."
+  },
+  {
+    "category": "Problem Solving & Early Learning",
+    "title": "Completing Simple Puzzles (If Available)",
+    "description": "Focus on 2-3 piece puzzles."
+  },
+  {
+    "category": "Problem Solving & Early Learning",
+    "title": "Finding Hidden Objects (Simple)",
+    "description": "Hide a toy and have them find it."
+  },
+  {
+    "category": "Outdoor (If Possible and Safe)",
+    "title": "Playing with Sticks",
+    "description": "Collecting, drawing in the dirt, making a pile."
+  },
+  {
+    "category": "Outdoor (If Possible and Safe)",
+    "title": "Looking for Interesting Rocks or Leaves",
+    "description": "Collect and sort natural treasures."
+  },
+  {
+    "title": "Make Funny Faces",
+    "description": "Stand in front of a mirror and see what your face can do!",
+    "category": "Moving and Grooving",
+    "id": "1"
+  },
+  {
+    "title": "kmsKEd we nxjµ∑EjJJJ?IJ\"IRJJJFGMRMh,,  m bmm kb m kb mb k b,mm kju0mmj5ki4kjm",
+    "description": "[lo][poiuytrebwq",
+    "category": "Moving and Grooving",
+    "id": "2"
+  }
+]
