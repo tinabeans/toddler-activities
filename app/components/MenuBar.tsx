@@ -14,7 +14,7 @@ export default function MenuBar({ onToggleStats, onAddActivity, categories, isSt
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 bg-white shadow-md z-10">
+      <div className="fixed top-0 left-0 right-0 bg-white shadow-md z-20">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <button
             onClick={onToggleStats}

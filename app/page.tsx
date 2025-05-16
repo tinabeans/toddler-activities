@@ -214,7 +214,7 @@ export default function Home() {
           </h1>
           {currentActivity && (
             <>
-              <div className="bg-white p-5 sm:p-8 rounded-2xl shadow-xl animate-fade-in mb-6 sm:mb-8">
+              <div className="bg-white p-5 sm:p-8 rounded-2xl shadow-xl animate-fade-in mb-6 sm:mb-8 relative z-0">
                 <div className="mb-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
                   <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${
                     categoryColors[currentActivity.category]?.bg || 'bg-gray-100'
@@ -232,7 +232,7 @@ export default function Home() {
                     <button
                       onClick={handleComplete}
                       disabled={isLoading}
-                      className={`px-4 py-2 rounded-xl bg-gradient-to-r ${categoryColors[currentActivity.category]?.gradient || 'from-green-500 to-emerald-500'} text-white font-bold hover:shadow-lg transform hover:scale-105 transition-all text-sm whitespace-nowrap`}
+                      className={`px-4 py-2 rounded-xl bg-gradient-to-r ${categoryColors[currentActivity.category]?.gradient || 'from-green-500 to-emerald-500'} text-white font-bold hover:shadow-lg transform hover:scale-105 transition-all text-sm whitespace-nowrap relative z-0`}
                     >
                       We did it! 🚀
                     </button>
@@ -250,7 +250,7 @@ export default function Home() {
                 <button
                   onClick={getRandomActivity}
                   disabled={isLoading}
-                  className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-2xl border-4 transition-all font-bold text-purple-600 border-purple-600 hover:bg-purple-50 hover:scale-105 shadow-sm"
+                  className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-2xl border-4 transition-all font-bold text-purple-600 border-purple-600 hover:bg-purple-50 hover:scale-105 shadow-sm relative z-0"
                 >
                   Another one 🎲
                 </button>

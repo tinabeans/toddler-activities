@@ -106,7 +106,7 @@ export default function StatsPanel({ isOpen, onClose, onEditActivity, onDeleteAc
       <div 
         className={`fixed inset-0 bg-black transition-opacity duration-300 ${
           isOpen ? 'opacity-50' : 'opacity-0 pointer-events-none'
-        }`}
+        } z-30`}
         onClick={onClose}
       />
 
@@ -114,13 +114,13 @@ export default function StatsPanel({ isOpen, onClose, onEditActivity, onDeleteAc
       <div 
         className={`fixed top-0 left-0 h-full bg-white shadow-2xl transform transition-transform duration-300 ease-in-out overflow-hidden ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } w-full sm:w-[90%] md:w-96 max-w-full`}
+        } w-full sm:w-[90%] md:w-96 max-w-full z-40`}
       >
         <div className="h-full flex flex-col">
           <div className="p-6 border-b">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold text-purple-600">
-                Activity Stats 📊
+                All Activities
               </h2>
               <button
                 onClick={onClose}
