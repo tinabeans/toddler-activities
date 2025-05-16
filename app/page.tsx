@@ -223,7 +223,7 @@ export default function Home() {
                   } self-start`}>
                     {currentActivity.category}
                   </span>
-                  <div className="flex items-center gap-3 self-end sm:self-auto">
+                  <div className="hidden sm:flex items-center gap-3 self-end sm:self-auto">
                     {completionCounts[currentActivity.title] > 0 && (
                       <span className={`text-sm ${categoryColors[currentActivity.category]?.text || 'text-purple-400'} opacity-75`}>
                         Done {completionCounts[currentActivity.title]} {completionCounts[currentActivity.title] === 1 ? 'time' : 'times'}
@@ -241,16 +241,32 @@ export default function Home() {
                 <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-800">
                   {currentActivity.title}
                 </h2>
-                <p className="text-base sm:text-lg text-gray-600">
+                <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-0">
                   {currentActivity.description}
                 </p>
+                
+                {/* Mobile "We did it!" button - only shown on small screens */}
+                <div className="flex sm:hidden items-center justify-between mt-5">
+                  <button
+                    onClick={handleComplete}
+                    disabled={isLoading}
+                    className={`px-4 py-2 rounded-xl bg-gradient-to-r ${categoryColors[currentActivity.category]?.gradient || 'from-green-500 to-emerald-500'} text-white font-bold hover:shadow-lg transform hover:scale-105 transition-all text-sm whitespace-nowrap relative z-0`}
+                  >
+                    We did it! 🚀
+                  </button>
+                  {completionCounts[currentActivity.title] > 0 && (
+                    <span className={`text-sm ${categoryColors[currentActivity.category]?.text || 'text-purple-400'} opacity-75 ml-auto`}>
+                      Done {completionCounts[currentActivity.title]} {completionCounts[currentActivity.title] === 1 ? 'time' : 'times'}
+                    </span>
+                  )}
+                </div>
               </div>
               
-              <div className="flex justify-center">
+              <div className="flex justify-center w-full">
                 <button
                   onClick={getRandomActivity}
                   disabled={isLoading}
-                  className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-2xl border-4 transition-all font-bold text-purple-600 border-purple-600 hover:bg-purple-50 hover:scale-105 shadow-sm relative z-0"
+                  className="w-full max-w-2xl px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-2xl border-4 transition-all font-bold text-purple-600 border-purple-600 hover:bg-purple-50 hover:scale-[1.02] shadow-sm relative z-0"
                 >
                   Another one 🎲
                 </button>
