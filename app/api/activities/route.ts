@@ -4,7 +4,8 @@ import {
   getActivities, 
   createActivity, 
   updateActivity,
-  updateCompletionCount
+  updateCompletionCount,
+  deleteActivity
 } from '../../lib/db';
 import { Activity } from '../../types/activity';
 
@@ -217,6 +218,136 @@ export async function PUT(request: Request) {
     return NextResponse.json(
       { 
         error: 'Failed to update activity',
+        details: errorMessage,
+        errorType: errorName,
+        hint: status === 403 ? 'Database write permission denied. Please check database permissions.' : undefined,
+        diagnostics: {
+          environment: {
+            NODE_ENV: process.env.NODE_ENV,
+            VERCEL_ENV: process.env.VERCEL_ENV,
+            HAS_POSTGRES_URL: !!process.env.POSTGRES_URL,
+            HAS_POSTGRES_USER: !!process.env.POSTGRES_USER,
+          },
+          errorProperties: errorProps,
+          pgErrorCode: (error as any)?.code,
+          pgErrorDetail: (error as any)?.detail,
+          pgErrorHint: (error as any)?.hint,
+          pgErrorSeverity: (error as any)?.severity,
+          timestamp: new Date().toISOString()
+        }
+      },
+      { status }
+    );
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    console.log('DELETE /api/activities - Starting request processing');
+    
+    // Get the activity ID or title from the URL
+    const url = new URL(request.url);
+    const id = url.searchParams.get('id');
+    const title = url.searchParams.get('title');
+    
+    if (!id && !title) {
+      console.log('Activity identifier (ID or title) is missing in delete request');
+      return NextResponse.json(
+        { error: 'Activity ID or title is required' },
+        { status: 400 }
+      );
+    }
+    
+    console.log(`Attempting to delete activity with ${id ? 'ID: ' + id : 'title: ' + title}`);
+    
+    // Log environment variables (sanitized)
+    const envCheck = {
+      NODE_ENV: process.env.NODE_ENV,
+      VERCEL_ENV: process.env.VERCEL_ENV,
+      HAS_POSTGRES_URL: !!process.env.POSTGRES_URL,
+      HAS_POSTGRES_USER: !!process.env.POSTGRES_USER,
+    };
+    console.log('Environment check:', envCheck);
+    
+    // Log database connection info before delete
+    try {
+      const { rows: [roleInfo] } = await sql`SELECT current_user, current_database()`;
+      console.log('Current database connection info:', JSON.stringify(roleInfo));
+    } catch (dbError) {
+      console.error('Error checking database connection info:', dbError);
+      return NextResponse.json({
+        error: 'Failed to check database connection',
+        details: dbError instanceof Error ? dbError.message : 'Unknown error',
+        diagnostics: { environment: envCheck }
+      }, { status: 500 });
+    }
+    
+    let result;
+    
+    if (id) {
+      // Delete by ID
+      result = await sql`
+        DELETE FROM activities
+        WHERE id = ${id}::integer
+        RETURNING id
+      `;
+    } else if (title) {
+      // Delete by title
+      result = await sql`
+        DELETE FROM activities
+        WHERE title = ${title}
+        RETURNING id
+      `;
+    }
+    
+    if (!result || result.rowCount === 0) {
+      console.log(`Activity with ${id ? 'ID ' + id : 'title ' + title} not found`);
+      return NextResponse.json(
+        { error: 'Activity not found' },
+        { status: 404 }
+      );
+    }
+    
+    console.log(`Activity with ${id ? 'ID ' + id : 'title ' + title} deleted successfully`);
+    return NextResponse.json({ 
+      success: true, 
+      identifier: id || title 
+    });
+    
+  } catch (error) {
+    console.error('Error deleting activity:', error);
+    
+    // Enhanced error logging
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorName = error instanceof Error ? error.name : 'UnknownErrorType';
+    const errorStack = error instanceof Error ? error.stack : '';
+    const status = errorMessage.includes('permission denied') ? 403 : 500;
+    
+    console.error('Detailed delete error information:');
+    console.error('Error Type:', errorName);
+    console.error('Status:', status);
+    console.error('Message:', errorMessage);
+    console.error('Stack:', errorStack);
+    
+    // Extract error properties
+    const errorProps: Record<string, any> = {};
+    try {
+      Object.getOwnPropertyNames(error).forEach(prop => {
+        try {
+          // @ts-ignore
+          errorProps[prop] = typeof error[prop] === 'function' ? '[Function]' : error[prop];
+        } catch (e) {
+          errorProps[prop] = '[Error accessing property]';
+        }
+      });
+    } catch (e) {
+      console.error('Error extracting error properties:', e);
+    }
+    
+    // Return detailed diagnostics in the response itself
+    return NextResponse.json(
+      { 
+        error: 'Failed to delete activity',
         details: errorMessage,
         errorType: errorName,
         hint: status === 403 ? 'Database write permission denied. Please check database permissions.' : undefined,

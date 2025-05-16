@@ -20,5 +20,20 @@ const config: Config = {
     },
   },
   plugins: [],
+  safelist: [
+    // Add commonly used classes that might be dynamically constructed
+    {
+      pattern: /bg-(pink|sky|violet|amber|emerald|indigo|lime|gray|purple|green|blue|rose|orange)-(100|500|800)/,
+    },
+    {
+      pattern: /text-(pink|sky|violet|amber|emerald|indigo|lime|gray|purple|green|blue|rose|orange)-(100|500|800)/,
+    },
+    {
+      pattern: /from-(pink|sky|violet|amber|emerald|indigo|lime|gray|purple|green|blue|rose|orange)-500/,
+    },
+    {
+      pattern: /to-(pink|sky|violet|amber|emerald|indigo|lime|gray|purple|green|blue|rose|orange)-500/,
+    },
+  ],
 }
 export default config 

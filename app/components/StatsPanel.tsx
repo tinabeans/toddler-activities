@@ -3,11 +3,13 @@
 import { Activity, ActivityWithStats } from '../types/activity';
 import { useEffect, useState } from 'react';
 import EditActivityModal from './EditActivityModal';
+import { fetchActivities } from '../lib/api';
 
 interface StatsPanelProps {
   isOpen: boolean;
   onClose: () => void;
   onEditActivity: (activity: Activity) => void;
+  onDeleteActivity: (activityId: string) => void;
   refreshTrigger: number;
 }
 
@@ -42,7 +44,7 @@ const categoryColors: Record<string, { bg: string; text: string }> = {
   }
 };
 
-export default function StatsPanel({ isOpen, onClose, onEditActivity, refreshTrigger }: StatsPanelProps) {
+export default function StatsPanel({ isOpen, onClose, onEditActivity, onDeleteActivity, refreshTrigger }: StatsPanelProps) {
   const [activities, setActivities] = useState<ActivityWithStats[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -52,9 +54,9 @@ export default function StatsPanel({ isOpen, onClose, onEditActivity, refreshTri
   useEffect(() => {
     const loadStats = async () => {
       try {
-        const response = await fetch('/activities.json');
-        const allActivities: Activity[] = await response.json();
+        const allActivities = await fetchActivities();
         
+        // Process the activities as before
         const completionData = localStorage.getItem('activityCompletions') || '{}';
         const completions = JSON.parse(completionData);
         
@@ -156,7 +158,7 @@ export default function StatsPanel({ isOpen, onClose, onEditActivity, refreshTri
               <div className="p-6 space-y-4">
                 {filteredActivities.map((activity) => (
                   <div 
-                    key={activity.title}
+                    key={activity.id || `${activity.category}-${activity.title}`}
                     className="bg-gray-50 p-4 rounded-xl shadow-sm hover:shadow transition-shadow"
                   >
                     <div className="flex justify-between items-start mb-2">
@@ -206,6 +208,12 @@ export default function StatsPanel({ isOpen, onClose, onEditActivity, refreshTri
           isOpen={true}
           onClose={() => setEditingActivity(null)}
           onSave={handleEditSave}
+          onDelete={() => {
+            // Use the activity.id if available, otherwise try to delete by title as a fallback
+            const idToDelete = editingActivity.id || editingActivity.title;
+            onDeleteActivity(idToDelete);
+            setEditingActivity(null);
+          }}
           activity={editingActivity}
           categories={categories.filter(cat => cat !== 'All')}
         />

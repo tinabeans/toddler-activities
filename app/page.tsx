@@ -5,6 +5,7 @@ import { Activity } from './types/activity';
 import StatsPanel from './components/StatsPanel';
 import MenuBar from './components/MenuBar';
 import { Barrio } from 'next/font/google';
+import { fetchActivities, createActivity, updateActivity, deleteActivity } from './lib/api';
 
 const categoryColors: Record<string, { bg: string; text: string; gradient: string }> = {
   'Moving and Grooving': { 
@@ -59,8 +60,7 @@ export default function Home() {
 
   const loadActivities = async () => {
     try {
-      const response = await fetch('/activities.json');
-      const activities = await response.json();
+      const activities = await fetchActivities();
       setAllActivities(activities);
       return activities;
     } catch (error) {
@@ -105,18 +105,8 @@ export default function Home() {
 
   const handleAddActivity = async (newActivity: Omit<Activity, 'id'>) => {
     try {
-      // Add the new activity to the JSON file
-      const response = await fetch('/api/activities', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newActivity),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to save activity');
-      }
+      // Add the new activity via the API
+      await createActivity(newActivity);
 
       // Reload activities
       const activities = await loadActivities();
@@ -137,17 +127,7 @@ export default function Home() {
 
   const handleEditActivity = async (editedActivity: Activity) => {
     try {
-      const response = await fetch('/api/activities', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(editedActivity),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to update activity');
-      }
+      await updateActivity(editedActivity);
 
       // Reload activities to get the updated list
       const activities = await loadActivities();
@@ -165,6 +145,40 @@ export default function Home() {
     } catch (error) {
       console.error('Error updating activity:', error);
       alert('Failed to update activity. Please try again.');
+    }
+  };
+
+  const handleDeleteActivity = async (activityId: string) => {
+    try {
+      const confirmDelete = window.confirm('Are you sure you want to delete this activity? This cannot be undone.');
+      
+      if (!confirmDelete) {
+        return; // User cancelled the deletion
+      }
+      
+      await deleteActivity(activityId);
+
+      // Reload activities to get the updated list
+      const activities = await loadActivities();
+      
+      // If this was the current activity, get a new random one
+      if (currentActivity && currentActivity.id === activityId) {
+        if (activities.length > 0) {
+          const randomIndex = Math.floor(Math.random() * activities.length);
+          setCurrentActivity(activities[randomIndex]);
+        } else {
+          setCurrentActivity(null);
+        }
+      }
+
+      // Trigger a refresh of the stats panel
+      setRefreshTrigger(prev => prev + 1);
+      
+      // Show success message
+      alert('Activity deleted successfully');
+    } catch (error) {
+      console.error('Error deleting activity:', error);
+      alert('Failed to delete activity. Please try again.');
     }
   };
 
@@ -189,6 +203,7 @@ export default function Home() {
         isOpen={isStatsPanelOpen} 
         onClose={() => setIsStatsPanelOpen(false)}
         onEditActivity={handleEditActivity}
+        onDeleteActivity={handleDeleteActivity}
         refreshTrigger={refreshTrigger}
       />
       

@@ -167,4 +167,42 @@ export async function updateCompletionCount(id: string, count: number) {
     });
     throw error;
   }
+}
+
+export async function deleteActivity(id: string) {
+  try {
+    console.log(`Deleting activity with ID: ${id}`);
+    
+    // First check if the activity exists
+    const checkResult = await sql`
+      SELECT id FROM activities WHERE id = ${id}::integer
+    `;
+    
+    if (checkResult.rowCount === 0) {
+      console.log(`Activity with ID ${id} not found`);
+      return null;
+    }
+    
+    // Delete the activity
+    const { rowCount } = await sql`
+      DELETE FROM activities
+      WHERE id = ${id}::integer
+      RETURNING id
+    `;
+    
+    console.log(`Activity with ID ${id} deleted successfully, rowCount: ${rowCount}`);
+    
+    return { success: true, id };
+  } catch (error) {
+    console.error(`Error deleting activity with ID ${id}:`, error);
+    console.error('SQL Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      name: error instanceof Error ? error.name : 'UnknownErrorType',
+      stack: error instanceof Error ? error.stack : 'No stack trace',
+      code: (error as any)?.code,
+      detail: (error as any)?.detail,
+      position: (error as any)?.position,
+    });
+    throw error;
+  }
 } 
